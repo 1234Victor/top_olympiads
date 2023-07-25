@@ -1,0 +1,21 @@
+.home-header {
+    padding-top: 800px !important;
+  }
+  
+  .home-section {
+    position: relative;
+    z-index: -1;
+    background-color: white;
+    background-size: cover;
+  }
+  
+  .home-content {
+    padding: 9rem 0 2rem !important;
+    color: black;
+    text-align: left;
+  }
+  
+  .heading {
+    font-size: 2.4em !important;
+    padding-left: 50px !important;
+  }
