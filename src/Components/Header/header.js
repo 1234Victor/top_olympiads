@@ -10,7 +10,8 @@ import { FaPersonCane } from "react-icons/fa6";
 import { CgFileDocument } from "react-icons/cg";
 import "./header.css";
 import { Link } from "react-router-dom";
-import myImg from "../../icon_top.png";
+import logoBlack from "../../Assets/logoBlack.png";
+import logoWhite from "../../Assets/logoWhite.png";
 
 
 function Header() {
@@ -38,7 +39,7 @@ function Header() {
             >
                 <Container>
                     <Navbar.Brand href="/" className="d-flex">
-                        <img src={myImg} className="img-fluid logo" alt="Victor" />
+                        <img src={navColour ? logoWhite: logoBlack} className="img-fluid logo" alt="Victor" />
                         <strong class="title"> Top Olympiads Center</strong>
                     </Navbar.Brand>
                     <Navbar.Toggle
@@ -100,10 +101,10 @@ function Header() {
                     <Col>
                         <Nav className="extraNav" defaultActiveKey="#home">
                             <Nav.Item>
-                                    <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
+                                <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
                                     <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
-                                    </Nav.Link>
-                                </Nav.Item>
+                                </Nav.Link>
+                            </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link
                                     as={Link}

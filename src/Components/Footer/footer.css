@@ -1,0 +1,10 @@
+.footer {
+    background-color: white;
+    bottom: 0 !important;
+    padding-top: 10px !important;
+    padding-bottom: 8px !important;
+  }
+  
+  .footer-copywright {
+    text-align: center !important;
+  }
