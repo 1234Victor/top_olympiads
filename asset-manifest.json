@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/top_olympiads/static/css/main.2e32f06b.css",
+    "main.js": "/top_olympiads/static/js/main.ec4b9b85.js",
+    "static/js/787.3b7fd332.chunk.js": "/top_olympiads/static/js/787.3b7fd332.chunk.js",
+    "static/media/banner.png": "/top_olympiads/static/media/banner.3326a63e5a86b47fda19.png",
+    "static/media/about1.png": "/top_olympiads/static/media/about1.40909fed5a901ed8da79.png",
+    "static/media/button2.png": "/top_olympiads/static/media/button2.5e02c7d21a919b7bbbf8.png",
+    "static/media/button1.png": "/top_olympiads/static/media/button1.2221edc2f77becfb4f6e.png",
+    "static/media/button.png": "/top_olympiads/static/media/button.b6830c7842b8515b94b8.png",
+    "static/media/logoWhite.png": "/top_olympiads/static/media/logoWhite.b065884b67d106cd4273.png",
+    "static/media/logoBlack.png": "/top_olympiads/static/media/logoBlack.9107b105479bf92b436e.png",
+    "index.html": "/top_olympiads/index.html",
+    "main.2e32f06b.css.map": "/top_olympiads/static/css/main.2e32f06b.css.map",
+    "main.ec4b9b85.js.map": "/top_olympiads/static/js/main.ec4b9b85.js.map",
+    "787.3b7fd332.chunk.js.map": "/top_olympiads/static/js/787.3b7fd332.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e32f06b.css",
+    "static/js/main.ec4b9b85.js"
+  ]
+}
