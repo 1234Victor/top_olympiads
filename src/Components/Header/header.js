@@ -108,7 +108,7 @@ function Header() {
                             <Nav.Item>
                                 <Nav.Link
                                     as={Link}
-                                    to="/about"
+                                    to="/programs"
                                     onClick={() => updateExpanded(false)}
                                 >
                                     <FaChalkboardTeacher style={{ marginBottom: "2px" }} /> Programs
@@ -117,7 +117,7 @@ function Header() {
                             <Nav.Item>
                                 <Nav.Link
                                     as={Link}
-                                    to="/about"
+                                    to="/olympiads"
                                     onClick={() => updateExpanded(false)}
                                 >
                                     <TbOlympics style={{ marginBottom: "2px" }} /> Olympiads
@@ -126,7 +126,7 @@ function Header() {
                             <Nav.Item>
                                 <Nav.Link
                                     as={Link}
-                                    to="/about"
+                                    to="/timetable"
                                     onClick={() => updateExpanded(false)}
                                 >
                                     <SlCalender style={{ marginBottom: "2px" }} /> Timetable
@@ -135,7 +135,7 @@ function Header() {
                             <Nav.Item>
                                 <Nav.Link
                                     as={Link}
-                                    to="/about"
+                                    to="/parents"
                                     onClick={() => updateExpanded(false)}
                                 >
                                     <RiParentLine style={{ marginBottom: "2px" }} /> Parents
@@ -144,7 +144,7 @@ function Header() {
                             <Nav.Item>
                                 <Nav.Link
                                     as={Link}
-                                    to="/about"
+                                    to="/aboutus"
                                     onClick={() => updateExpanded(false)}
                                 >
                                     <AiOutlineUser style={{ marginBottom: "2px" }} /> About Us

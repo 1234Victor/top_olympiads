@@ -1,0 +1,17 @@
+.about-section {
+    padding: 2%;
+    position: relative;
+    background-color:white;
+}
+
+.about-title {
+    text-align: left;
+    font-family: "oswald" !important;
+    color: rgb(0, 119, 255)
+}
+
+.img-background {
+    padding: 2%;
+    background-color: white;
+}
+

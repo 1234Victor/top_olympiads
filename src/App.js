@@ -1,9 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 import Home from "./Components/Home/home"
 import NavBar from "./Components/Header/header"
 import Footer from "./Components/Footer/footer"
-import {BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
+import { AdminNews } from './Components/Home/Board/News/adminNews'
+import Olympiads from './Components/Olympiads/Olympiads'
+import Parents from './Components/Parents/Parents'
+import AboutUs from "./Components/AboutUs/AboutUs";
+import { AdminAnnoucements } from './Components/Home/Board/Annoucements/adminAnnoucements'
+import {AdminPrograms} from "./Components/Programs/adminPrograms"
+import {Programs} from "./Components/Programs/Programs"
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -11,9 +19,9 @@ function App() {
   const [load, updateLoad] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() =>{
+    const timer = setTimeout(() => {
       updateLoad(false);
-    },1200);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
@@ -23,7 +31,14 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route exact path = "/" element = {<Home />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/Olympiads" element={<Olympiads />} />
+          <Route exact path="/Parents" element={<Parents />} />
+          <Route exact path="/Aboutus" element={<AboutUs />} />
+          <Route exact path="/Programs" element={<Programs />} />
+          <Route exact path="/admin/news" element={<AdminNews />} />
+          <Route exact path="/admin/annoucements" element={<AdminAnnoucements />} />
+          <Route exact path="/admin/programs" element={<AdminPrograms />} />
         </Routes>
         <Footer />
       </Router>

@@ -19,3 +19,11 @@
     object-fit: contain;
     transition: all 0.5s ease-in-out; /* Add this for a smooth hover effect */
 }  
+
+.custom-button {
+    width: 100%; /* Span across the column */
+    font-size:1.5em!important;
+    text-align: center!important; /* Center the text */
+    transition: all 0.5s ease-in-out; /* Add this for a smooth hover effect */
+    padding-bottom: 1%!important;
+  }
