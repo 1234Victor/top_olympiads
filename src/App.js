@@ -31,14 +31,14 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/Olympiads" element={<Olympiads />} />
-          <Route exact path="/Parents" element={<Parents />} />
-          <Route exact path="/Aboutus" element={<AboutUs />} />
-          <Route exact path="/Programs" element={<Programs />} />
-          <Route exact path="/admin/news" element={<AdminNews />} />
-          <Route exact path="/admin/annoucements" element={<AdminAnnoucements />} />
-          <Route exact path="/admin/programs" element={<AdminPrograms />} />
+          <Route exact path="/top_olympiads" element={<Home />} />
+          <Route exact path="/top_olympiads/Olympiads" element={<Olympiads />} />
+          <Route exact path="/top_olympiads/Parents" element={<Parents />} />
+          <Route exact path="/top_olympiads/Aboutus" element={<AboutUs />} />
+          <Route exact path="/top_olympiads/Programs" element={<Programs />} />
+          <Route exact path="/top_olympiads/admin/news" element={<AdminNews />} />
+          <Route exact path="/top_olympiads/admin/annoucements" element={<AdminAnnoucements />} />
+          <Route exact path="/top_olympiads/admin/programs" element={<AdminPrograms />} />
         </Routes>
         <Footer />
       </Router>
