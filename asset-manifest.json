@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/top_olympiads/static/css/main.b84c8a50.css",
-    "main.js": "/top_olympiads/static/js/main.0b45d33f.js",
+    "main.js": "/top_olympiads/static/js/main.b42fcd1d.js",
     "static/js/787.3b7fd332.chunk.js": "/top_olympiads/static/js/787.3b7fd332.chunk.js",
     "static/media/banner.png": "/top_olympiads/static/media/banner.3326a63e5a86b47fda19.png",
     "static/media/runze2.png": "/top_olympiads/static/media/runze2.37f1c94c3c954498e41b.png",
@@ -16,11 +16,11 @@
     "static/media/computerComp.png": "/top_olympiads/static/media/computerComp.6eae091d0dca2b7c047f.png",
     "index.html": "/top_olympiads/index.html",
     "main.b84c8a50.css.map": "/top_olympiads/static/css/main.b84c8a50.css.map",
-    "main.0b45d33f.js.map": "/top_olympiads/static/js/main.0b45d33f.js.map",
+    "main.b42fcd1d.js.map": "/top_olympiads/static/js/main.b42fcd1d.js.map",
     "787.3b7fd332.chunk.js.map": "/top_olympiads/static/js/787.3b7fd332.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b84c8a50.css",
-    "static/js/main.0b45d33f.js"
+    "static/js/main.b42fcd1d.js"
   ]
 }
