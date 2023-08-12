@@ -10,7 +10,7 @@ import AboutUs from "./Components/AboutUs/AboutUs";
 import { AdminAnnoucements } from './Components/Home/Board/Annoucements/adminAnnoucements'
 import {AdminPrograms} from "./Components/Programs/adminPrograms"
 import {Programs} from "./Components/Programs/Programs"
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
