@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form } from 'react-bootstrap';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export class EditPrograms extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            ProgramsDescription: props.ProgramsDescription || ''
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleEditorChange = (event, editor) => {
+        const data = editor.getData();
+        this.setState({ ProgramsDescription: data });
     }
 
     handleSubmit(event) {
@@ -18,7 +28,7 @@ export class EditPrograms extends Component {
             body: JSON.stringify({
                 ProgramsId: event.target.ProgramsId.value,
                 ProgramsName: event.target.ProgramsName.value,
-                ProgramsDescription: event.target.ProgramsDescription.value
+                ProgramsDescription: this.state.ProgramsDescription
             })
         })
         .then(res => res.json())
@@ -63,9 +73,11 @@ export class EditPrograms extends Component {
 
                                 <Form.Group controlId="ProgramsDescription">
                                     <Form.Label>Programs Description</Form.Label>
-                                    <Form.Control type="text" name="ProgramsDescription" required
-                                        defaultValue={this.props.ProgramsDescription}
-                                        placeholder="ProgramsDescription" />
+                                    <CKEditor
+                                        editor={ClassicEditor}
+                                        data={this.props.ProgramsDescription}
+                                        onChange={this.handleEditorChange}
+                                    />
                                 </Form.Group>
 
                                 <Form.Group>
@@ -82,7 +94,6 @@ export class EditPrograms extends Component {
                     </Modal.Footer>
                 </Modal>
             </div>
-
         )
     }
 }

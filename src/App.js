@@ -9,6 +9,7 @@ import Parents from './Components/Parents/Parents'
 import AboutUs from "./Components/AboutUs/AboutUs";
 import { AdminAnnoucements } from './Components/Home/Board/Annoucements/adminAnnoucements'
 import {AdminPrograms} from "./Components/Programs/adminPrograms"
+import { AdminTimetable } from "./Components/Timetable/adminTimetable";
 import {Programs} from "./Components/Programs/Programs"
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/admin/news" element={<AdminNews />} />
           <Route exact path="/admin/annoucements" element={<AdminAnnoucements />} />
           <Route exact path="/admin/programs" element={<AdminPrograms />} />
+          <Route exact path = "/admin/timetable" element = {<AdminTimetable />} />
           <Route exact path = "" element = {<Home />} />
         </Routes>
         <Footer />

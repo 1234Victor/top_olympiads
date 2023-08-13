@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Table } from "react-bootstrap";
 import { Button, ButtonToolbar, Col, Row } from 'react-bootstrap';
-import { EditPrograms } from "./EditPrograms";
-import { AddPrograms } from "./addPrograms";
+import { EditTimetable } from "./EditTimetable";
+import { AddTimetable } from "./addTimetable";
 
-export class AdminPrograms extends Component {
+export class AdminTimetable extends Component {
     constructor(props) {
         super(props);
-        this.state = { programs: [], editModelShow: false, addModelShow: false }
+        this.state = { Timetable: [], editModelShow: false, addModelShow: false }
     }
 
     refreshList() {
-        fetch(process.env.REACT_APP_API + "programs")
+        fetch(process.env.REACT_APP_API + "Timetable")
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network was not ok');
@@ -19,19 +19,19 @@ export class AdminPrograms extends Component {
                 return response.json()
             })
             .then(data => {
-                this.setState({ programs: data });
+                this.setState({ Timetable: data });
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation: ', error)
             });
     }
 
-    deletePrograms(programsid) {
+    deleteTimetable(Timetableid) {
         if (window.confirm('Are you sure?')) {
-            fetch(process.env.REACT_APP_API + 'programs/' + programsid, {
+            fetch(process.env.REACT_APP_API + 'Timetable/' + Timetableid, {
                 method: 'DELETE',
                 headers: {
-                    'Accept': 'aplication/json',
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             })
@@ -44,8 +44,11 @@ export class AdminPrograms extends Component {
     componentDidUpdate() {
         this.refreshList();
     }
+
+    
     render() {
-        const { programs, programsid, programsname, programsdescription } = this.state;
+        
+        const { Timetable, Timetableid, Timetablename, Timetabledescription, Photofilename } = this.state;
         let addModelClose = () => this.setState({ addModelShow: false });
         let editModelClose = () => this.setState({ editModelShow: false });
         return (
@@ -53,18 +56,20 @@ export class AdminPrograms extends Component {
                 <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
                         <tr>
-                            <th>ProgramstId</th>
-                            <th>ProgramsName</th>
-                            <th>ProgramsDescription</th>
+                            <th>TimetabletId</th>
+                            <th>TimetableName</th>
+                            <th>TimetableDescription</th>
                             <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {programs.map(programs =>
-                            <tr key={programs.ProgramsId}>
-                                <td>{programs.ProgramsId}</td>
-                                <td>{programs.ProgramsName}</td>
-                                <td><div dangerouslySetInnerHTML={{ __html: programs.ProgramsDescription }} /></td>
+                        {Timetable.map(Timetable =>{
+                            //console.log(Timetable.PhotoFileName);
+                            return(
+                            <tr key={Timetable.TimetableId}>
+                                <td>{Timetable.TimetableId}</td>
+                                <td>{Timetable.TimetableName}</td>
+                                <td><div dangerouslySetInnerHTML={{ __html: Timetable.TimetableDescription }} /></td>
                                 <td>
                                     <ButtonToolbar>
                                         <Row>
@@ -72,38 +77,39 @@ export class AdminPrograms extends Component {
                                                 <Button className="mr-2" variant="info"
                                                     onClick={() => this.setState({
                                                         editModelShow: true,
-                                                        programsid: programs.ProgramsId, programsname: programs.ProgramsName, programsdescription: programs.ProgramsDescription
+                                                        Timetableid: Timetable.TimetableId, Timetablename: Timetable.TimetableName, Timetabledescription: Timetable.TimetableDescription, Photofilename: Timetable.PhotoFileName
                                                     })}>
                                                     Edit
                                                 </Button>
                                             </Col>
                                             <Col>
                                                 <Button className="mr-2" variant="danger"
-                                                    onClick={() => this.deletePrograms(programs.ProgramsId)}>
+                                                    onClick={() => this.deleteTimetable(Timetable.TimetableId)}>
                                                     Delete
                                                 </Button>
                                             </Col>
                                         </Row>
-                                        <EditPrograms show={this.state.editModelShow}
+                                        <EditTimetable show={this.state.editModelShow}
                                             onHide={editModelClose}
-                                            ProgramsId={programsid}
-                                            ProgramsName={programsname}
-                                            ProgramsDescription={programsdescription} />
+                                            TimetableId={Timetableid}
+                                            TimetableName={Timetablename}
+                                            TimetableDescription={Timetabledescription} 
+                                            PhotoFileName = {Photofilename}/>
                                     </ButtonToolbar>
                                 </td>
-                            </tr>
-                        )}
+                            </tr>);
+                        })}
                     </tbody>
                 </Table>
 
                 <ButtonToolbar>
                     <Button variant='primary'
                         onClick={() => this.setState({ addModelShow: true })}>
-                        Add Programs
+                        Add Timetable
                     </Button>
 
-                    <AddPrograms show={this.state.addModelShow} onHide={addModelClose}>
-                    </AddPrograms>
+                    <AddTimetable show={this.state.addModelShow} onHide={addModelClose}>
+                    </AddTimetable>
                 </ButtonToolbar>
             </div>
         )

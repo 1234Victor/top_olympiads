@@ -1,0 +1,26 @@
+.ttable-card-view {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    margin-top: 2%!important;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgb(0, 119, 255) !important;
+}
+
+.ttable-card-view:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 2px 3px rgb(0, 119, 255);
+}
+
+.line-separator {
+    height: 2px !important; /* Adjust the thickness of the line */
+    background-color: rgb(0, 119, 255); /* Adjust the color of the line */
+    margin: 2% 0; /* Adjust the space above and below the line */
+}
+
+.ttable-title {
+    font-family: "oswald" !important;
+    color: rgb(0, 119, 255)!important;
+}
