@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { Button, ButtonToolbar, Col, Row } from 'react-bootstrap';
 import { EditNews } from "./EditNews";
 import { AddNews } from "./addNews";
+import AdminHeader from "../../../AdminHeader/adminHeader.js";
 
 export class AdminNews extends Component {
     constructor(props) {
@@ -49,7 +50,13 @@ export class AdminNews extends Component {
         let addModelClose = () => this.setState({ addModelShow: false });
         let editModelClose = () => this.setState({ editModelShow: false });
         return (
-            <div style={{ marginLeft: "10%", marginRight: "10%" }}>
+            <div>
+                <Row>
+                    <Col md={2}>
+                        <AdminHeader />
+                    </Col>
+                    <Col md={10}>
+                        <div style={{ marginLeft: "2%", marginRight: "2%" }}>
                 <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
                         <tr>
@@ -105,6 +112,9 @@ export class AdminNews extends Component {
                     <AddNews show={this.state.addModelShow} onHide={addModelClose}>
                     </AddNews>
                 </ButtonToolbar>
+            </div>
+                    </Col>
+                </Row>
             </div>
         )
     }

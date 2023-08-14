@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { Button, ButtonToolbar, Col, Row } from 'react-bootstrap';
 import { EditTimetable } from "./EditTimetable";
 import { AddTimetable } from "./addTimetable";
+import AdminHeader from "../AdminHeader/adminHeader.js";
 
 export class AdminTimetable extends Component {
     constructor(props) {
@@ -24,6 +25,7 @@ export class AdminTimetable extends Component {
             .catch(error => {
                 console.error('There has been a problem with your fetch operation: ', error)
             });
+            console.log(process.env.REACT_APP_API + "Timetable")
     }
 
     deleteTimetable(Timetableid) {
@@ -51,8 +53,14 @@ export class AdminTimetable extends Component {
         const { Timetable, Timetableid, Timetablename, Timetabledescription, Photofilename } = this.state;
         let addModelClose = () => this.setState({ addModelShow: false });
         let editModelClose = () => this.setState({ editModelShow: false });
-        return (
-            <div style={{ marginLeft: "10%", marginRight: "10%" }}>
+        return ( 
+        <div>
+            <Row>
+                <Col md={2}>
+                    <AdminHeader />
+                </Col>
+                <Col md={10}>
+                    <div style={{ marginLeft: "2%", marginRight: "2%" }}>
                 <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
                         <tr>
@@ -111,6 +119,9 @@ export class AdminTimetable extends Component {
                     <AddTimetable show={this.state.addModelShow} onHide={addModelClose}>
                     </AddTimetable>
                 </ButtonToolbar>
+            </div>
+            </Col>
+            </Row>
             </div>
         )
     }

@@ -1,17 +1,53 @@
-import React, { Component } from 'react'
-import { Modal, Button, Row, Col, Form, Image } from 'react-bootstrap'
-
-
+import React, { Component } from 'react';
+import { Modal, Button, Row, Col, Form, Image } from 'react-bootstrap';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export class AddTimetable extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            TimetableDescription: this.props.TimetableDescription || '',
+            photofilename: this.props.PhotoFileName || 'anonymous.png',
+            imagesrc: process.env.REACT_APP_PHOTOPATH + encodeURIComponent(this.props.PhotoFileName || 'anonymous.png')
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleFileSelected=this.handleFileSelected.bind(this);
+        this.handleFileSelected = this.handleFileSelected.bind(this);
     }
 
-    photofilename = "anonymous.png";
-    imagesrc = process.env.REACT_APP_PHOTOPATH + this.photofilename;
+    refreshList() {
+        fetch(process.env.REACT_APP_API + "Timetable")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network was not ok');
+                }
+                return response.json()
+            })
+            .then(data => {
+                this.setState({
+                    photofilename: this.props.PhotoFileName || 'anonymous.png',
+                    imagesrc: process.env.REACT_APP_PHOTOPATH + encodeURIComponent(this.props.PhotoFileName || 'anonymous.png')
+                });
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation: ', error)
+            });
+    }
+
+    componentDidMount() {
+        this.refreshList()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.TimetableDescription !== this.props.TimetableDescription ||prevProps.PhotoFileName !== this.props.PhotoFileName) {
+            this.refreshList();
+        }
+    }
+
+    handleEditorChange = (event, editor) => {
+        const data = editor.getData();
+        this.setState({ TimetableDescription: data });
+    }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -24,41 +60,43 @@ export class AddTimetable extends Component {
             body: JSON.stringify({
                 TimetableId: null,
                 TimetableName: event.target.TimetableName.value,
-                TimetableDescription: event.target.TimetableDescription.value,
-                PhotoFileName: this.photofilename
+                TimetableDescription: this.state.TimetableDescription,
+                PhotoFileName: this.state.photofilename
             })
         })
-        .then(res => res.json())
-        .then((result) => {
-            alert(result);
-        },
-        (error) => {
-            alert('Failed')
-        })
+            .then(res => res.json())
+            .then((result) => {
+                alert(result);
+            },
+                (error) => {
+                    alert('Failed')
+                });
     }
 
-    handleFileSelected(event){
+    handleFileSelected(event) {
         event.preventDefault();
-        this.photofilename=event.target.files[0].name;
+        const newPhotoFilename = event.target.files[0].name;
         const formData = new FormData();
         formData.append(
             "myFile",
             event.target.files[0],
-            event.target.files[0].name
+            newPhotoFilename
         );
 
-        fetch(process.env.REACT_APP_API+'Timetable/SaveFile',{
-            method:'POST',
-            body:formData
+        fetch(process.env.REACT_APP_API + 'Timetable/SaveFile', {
+            method: 'POST',
+            body: formData
         })
-        .then(res=>res.json())
-        .then((result)=>{
-            this.imagesrc=process.env.REACT_APP_PHOTOPATH+result;
-        },
-        (error)=>{
-            alert('Failed');
-        })
-        
+            .then(res => res.json())
+            .then((result) => {
+                this.setState({
+                    photofilename: newPhotoFilename,
+                    imagesrc: process.env.REACT_APP_PHOTOPATH + encodeURIComponent(result)
+                });
+            },
+                (error) => {
+                    alert('Failed');
+                });
     }
 
     render() {
@@ -77,7 +115,7 @@ export class AddTimetable extends Component {
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={6}>
+                            <Col sm={8}>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="TimetableName">
                                         <Form.Label>Timetable Name</Form.Label>
@@ -86,10 +124,14 @@ export class AddTimetable extends Component {
                                     </Form.Group>
                                     <Form.Group controlId="TimetableDescription">
                                         <Form.Label>Timetable Description</Form.Label>
-                                        <Form.Control type="text" name="TimetableDescription" required
-                                            placeholder="TimetableDescription" />
+                                        <CKEditor
+                                            editor={ClassicEditor}
+                                            data={this.state.TimetableDescription}
+                                            onChange={this.handleEditorChange}
+                                            style={{ minHeight: '300px' }}
+                                        />
                                     </Form.Group>
-                                    <br/>
+                                    <br />
                                     <Form.Group>
                                         <Button variant="primary" type="submit">
                                             Add Timetable
@@ -97,9 +139,13 @@ export class AddTimetable extends Component {
                                     </Form.Group>
                                 </Form>
                             </Col>
-                            <Col sm={6}>
-                                <Image width="200px" height="200px" src={this.imagesrc}/>
-                                <input onChange={this.handleFileSelected} type="File"/>
+                            <Col sm={4}>
+                                <Image
+                                    width="200px"
+                                    height="200px"
+                                    src={this.state.imagesrc}
+                                />
+                                <input type="File" accept=".jpg, .jpeg, .png" onChange={this.handleFileSelected} />
                             </Col>
                         </Row>
                     </Modal.Body>

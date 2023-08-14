@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Container, Row, Col} from "react-bootstrap";
 import "./about.css";
+import logoBlack from "../../Assets/logoBlack.png"
 
 export class Introduction extends Component{
     render(){
@@ -8,6 +9,9 @@ export class Introduction extends Component{
             <div className="about-section">
                 <Row style = {{paddingLeft:"2%", paddingRight:"2%"}}>
                     <h2  class="about-title">Welcome to TOP Olympiads</h2>
+                </Row>
+                <Row>
+                    <img src={logoBlack} alt="logo" className = "olympiadsImage"/>
                 </Row>
                 <Row className="about-content" style = {{paddingLeft:"2%", paddingRight:"2%"}}>
                     <p className="about-text"><br/>

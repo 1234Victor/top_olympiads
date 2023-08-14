@@ -39,7 +39,7 @@ function Header() {
             >
                 <Container>
                     <Navbar.Brand href="/" className="d-flex">
-                        <img src={navColour ? logoWhite: logoBlack} className="img-fluid logo" alt="Victor" />
+                        <img src={navColour ? logoWhite : logoBlack} className="img-fluid logo" alt="Victor" />
                         <strong class="title"> Top Olympiads Center</strong>
                     </Navbar.Brand>
                     <Navbar.Toggle
@@ -62,8 +62,9 @@ function Header() {
 
                             <Nav.Item>
                                 <Nav.Link
-                                    as={Link}
-                                    to="/about"
+                                    href="https://runzeworld.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     onClick={() => updateExpanded(false)}
                                 >
                                     Online Courses
@@ -71,8 +72,10 @@ function Header() {
                             </Nav.Item>
 
                             <Nav.Item>
-                                <Nav.Link as={Link}
-                                    to="/projects"
+                                <Nav.Link
+                                    href="https://runzeworld.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     onClick={() => updateExpanded(false)}
                                 >
                                     Free Math 1-8
@@ -81,8 +84,9 @@ function Header() {
 
                             <Nav.Item>
                                 <Nav.Link
-                                    as={Link}
-                                    to="/resume"
+                                    href="http://www.topolympiads.com/contact-us.html"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     onClick={() => updateExpanded(false)}
                                 >
                                     Contact Us
@@ -153,7 +157,7 @@ function Header() {
                             <Nav.Item>
                                 <Nav.Link
                                     as={Link}
-                                    to="/about"
+                                    to="/instructors"
                                     onClick={() => updateExpanded(false)}
                                 >
                                     <PiStudent style={{ marginBottom: "2px" }} /> Instructors
@@ -161,8 +165,9 @@ function Header() {
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link
-                                    as={Link}
-                                    to="/about"
+                                    href="http://www.topolympiads.com/seniors.html"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     onClick={() => updateExpanded(false)}
                                 >
                                     <FaPersonCane style={{ marginBottom: "2px" }} /> Seniors

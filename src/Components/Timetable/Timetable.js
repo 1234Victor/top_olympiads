@@ -38,13 +38,13 @@ export class Timetable extends Component {
     render(){
         const {Timetable} = this.state;
         return(
-            <Container>
-                <Row>
+            <div>
+            <div style = {{backgroundColor: "white"}}>
                     {Timetable.map((ttable) => (
                         <TimetableCard key={ttable.TimetableId} ttable={ttable}/>
                     ))}
-                </Row>
-            </Container>
+            </div>
+            </div>
         );
     }
 }

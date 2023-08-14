@@ -29,8 +29,7 @@ function SlideShow () {
        
         return (
             <div className="slideshow-container">
-                <a className="prev" onClick={prevSlide}>❮</a>
-                <a className="next" onClick={nextSlide}>❯</a>
+                
                
                 {SlideData.map((slide, index) => {
                     return(

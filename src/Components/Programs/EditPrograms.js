@@ -54,7 +54,7 @@ export class EditPrograms extends Component {
                     </Modal.Header>
                     <Modal.Body>
                     <Row>
-                        <Col sm={6}>
+                        <Col>
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Group controlId="ProgramsId">
                                     <Form.Label>Programs Id</Form.Label>

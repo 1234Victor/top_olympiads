@@ -8,13 +8,42 @@ export class EditTimetable extends Component {
         super(props);
         this.state = {
             TimetableDescription: this.props.TimetableDescription || '',
-            PhotoFileName: this.props.PhotoFileName || ''
-            
+            photofilename: this.props.PhotoFileName || 'anonymous.png',
+            imagesrc: process.env.REACT_APP_PHOTOPATH + encodeURIComponent(this.props.PhotoFileName || 'anonymous.png')
+
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFileSelected = this.handleFileSelected.bind(this);
     }
+    
+    refreshList() {
+        fetch(process.env.REACT_APP_API + "Timetable")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network was not ok');
+                }
+                return response.json()
+            })
+            .then(data => {
+                this.setState({ 
+                TimetableDescription: this.props.TimetableDescription || '',
+                photofilename: this.props.PhotoFileName || 'anonymous.png',
+                imagesrc: process.env.REACT_APP_PHOTOPATH + encodeURIComponent(this.props.PhotoFileName || 'anonymous.png') });
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation: ', error)
+            });
+    }
 
+    componentDidMount() {
+        this.refreshList()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.TimetableDescription !== this.props.TimetableDescription || prevProps.PhotoFileName !== this.props.PhotoFileName) {
+            this.refreshList();
+        }
+    }
     handleEditorChange = (event, editor) => {
         const data = editor.getData();
         this.setState({ TimetableDescription: data });
@@ -32,7 +61,7 @@ export class EditTimetable extends Component {
                 TimetableId: event.target.TimetableId.value,
                 TimetableName: event.target.TimetableName.value,
                 TimetableDescription: this.state.TimetableDescription,
-                PhotoFileName: this.state.PhotoFileName
+                PhotoFileName: this.state.photofilename
             })
         })
             .then(res => res.json())
@@ -42,36 +71,35 @@ export class EditTimetable extends Component {
                 alert('Failed');
             })
     }
+
+
     handleFileSelected(event) {
         event.preventDefault();
-
-        const fileName = event.target.files[0].name;
+        const newPhotoFilename = event.target.files[0].name;
         const formData = new FormData();
-        formData.append("myFile", event.target.files[0], fileName);
+        formData.append(
+            "myFile",
+            event.target.files[0],
+            newPhotoFilename
+        );
 
         fetch(process.env.REACT_APP_API + 'Timetable/SaveFile', {
             method: 'POST',
             body: formData
         })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return res.json();
-            })
+            .then(res => res.json())
             .then((result) => {
-                // If you expect some result from your API after successful file upload, you can handle it here
-            })
-            .catch(error => {
-                alert('Failed to upload the file');
-            });
-
-        this.setState({ PhotoFileName: fileName });
+                this.setState({
+                    photofilename: newPhotoFilename,
+                    imagesrc: process.env.REACT_APP_PHOTOPATH + encodeURIComponent(result)
+                });
+            },
+                (error) => {
+                    alert('Failed');
+                });
     }
 
-
     render() {
-        console.log(this.state.PhotoFileName);
         return (
             <div className="container">
                 <Modal
@@ -86,7 +114,7 @@ export class EditTimetable extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <Row>
-                            <Col sm={6}>
+                            <Col sm={8}>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="TimetableId">
                                         <Form.Label>Timetable Id</Form.Label>
@@ -107,11 +135,11 @@ export class EditTimetable extends Component {
                                         <Form.Label>Timetable Description</Form.Label>
                                         <CKEditor
                                             editor={ClassicEditor}
-                                            data={this.props.TimetableDescription}
+                                            data={this.state.TimetableDescription}
                                             onChange={this.handleEditorChange}
+                                            style={{ minHeight: '300px' }}
                                         />
                                     </Form.Group>
-
                                     <Form.Group>
                                         <Button variant="primary" type="submit">
                                             Update Timetable
@@ -119,14 +147,13 @@ export class EditTimetable extends Component {
                                     </Form.Group>
                                 </Form>
                             </Col>
-                            <Col sm={6}>
+                            <Col sm={4}>
                                 <Image
                                     width="200px"
                                     height="200px"
-                                    src={process.env.REACT_APP_PHOTOPATH + encodeURIComponent(this.props.PhotoFileName)}
-                                //src = {"https://localhost:44338/Photos/testset.png"}
+                                    src={this.state.imagesrc}
                                 />
-                                <input onChange={this.handleFileSelected} type="File" />
+                                <input type="File" accept=".jpg, .jpeg, .png" onChange={this.handleFileSelected}  />
                             </Col>
                         </Row>
                     </Modal.Body>

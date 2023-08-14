@@ -46,7 +46,7 @@ export class AddAnnoucements extends Component {
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={6}>
+                            <Col>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="AnnoucementsDate">
                                         <Form.Label>Annoucements Date</Form.Label>

@@ -46,7 +46,7 @@ export class AddNews extends Component {
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={6}>
+                            <Col>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="NewsDate">
                                         <Form.Label>News Date</Form.Label>

@@ -44,7 +44,7 @@ export class EditAnnoucements extends Component {
                     </Modal.Header>
                     <Modal.Body>
                     <Row>
-                        <Col sm={6}>
+                        <Col>
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Group controlId="AnnoucementsId">
                                     <Form.Label>AnnoucementsId</Form.Label>

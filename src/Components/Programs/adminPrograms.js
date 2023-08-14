@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { Button, ButtonToolbar, Col, Row } from 'react-bootstrap';
 import { EditPrograms } from "./EditPrograms";
 import { AddPrograms } from "./addPrograms";
+import AdminHeader from "../AdminHeader/adminHeader.js";
 
 export class AdminPrograms extends Component {
     constructor(props) {
@@ -49,62 +50,71 @@ export class AdminPrograms extends Component {
         let addModelClose = () => this.setState({ addModelShow: false });
         let editModelClose = () => this.setState({ editModelShow: false });
         return (
-            <div style={{ marginLeft: "10%", marginRight: "10%" }}>
-                <Table className="mt-4" striped bordered hover size="sm">
-                    <thead>
-                        <tr>
-                            <th>ProgramstId</th>
-                            <th>ProgramsName</th>
-                            <th>ProgramsDescription</th>
-                            <th>Options</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {programs.map(programs =>
-                            <tr key={programs.ProgramsId}>
-                                <td>{programs.ProgramsId}</td>
-                                <td>{programs.ProgramsName}</td>
-                                <td><div dangerouslySetInnerHTML={{ __html: programs.ProgramsDescription }} /></td>
-                                <td>
-                                    <ButtonToolbar>
-                                        <Row>
-                                            <Col>
-                                                <Button className="mr-2" variant="info"
-                                                    onClick={() => this.setState({
-                                                        editModelShow: true,
-                                                        programsid: programs.ProgramsId, programsname: programs.ProgramsName, programsdescription: programs.ProgramsDescription
-                                                    })}>
-                                                    Edit
-                                                </Button>
-                                            </Col>
-                                            <Col>
-                                                <Button className="mr-2" variant="danger"
-                                                    onClick={() => this.deletePrograms(programs.ProgramsId)}>
-                                                    Delete
-                                                </Button>
-                                            </Col>
-                                        </Row>
-                                        <EditPrograms show={this.state.editModelShow}
-                                            onHide={editModelClose}
-                                            ProgramsId={programsid}
-                                            ProgramsName={programsname}
-                                            ProgramsDescription={programsdescription} />
-                                    </ButtonToolbar>
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-                </Table>
+            <div>
+                <Row>
+                    <Col md={2}>
+                        <AdminHeader />
+                    </Col>
+                    <Col md={10}>
+                        <div style={{ marginLeft: "2%", marginRight: "2%" }}>
+                            <Table className="mt-4" striped bordered hover size="sm">
+                                <thead>
+                                    <tr>
+                                        <th>ProgramstId</th>
+                                        <th>ProgramsName</th>
+                                        <th>ProgramsDescription</th>
+                                        <th>Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {programs.map(programs =>
+                                        <tr key={programs.ProgramsId}>
+                                            <td>{programs.ProgramsId}</td>
+                                            <td>{programs.ProgramsName}</td>
+                                            <td><div dangerouslySetInnerHTML={{ __html: programs.ProgramsDescription }} /></td>
+                                            <td>
+                                                <ButtonToolbar>
+                                                    <Row>
+                                                        <Col>
+                                                            <Button className="mr-2" variant="info"
+                                                                onClick={() => this.setState({
+                                                                    editModelShow: true,
+                                                                    programsid: programs.ProgramsId, programsname: programs.ProgramsName, programsdescription: programs.ProgramsDescription
+                                                                })}>
+                                                                Edit
+                                                            </Button>
+                                                        </Col>
+                                                        <Col>
+                                                            <Button className="mr-2" variant="danger"
+                                                                onClick={() => this.deletePrograms(programs.ProgramsId)}>
+                                                                Delete
+                                                            </Button>
+                                                        </Col>
+                                                    </Row>
+                                                    <EditPrograms show={this.state.editModelShow}
+                                                        onHide={editModelClose}
+                                                        ProgramsId={programsid}
+                                                        ProgramsName={programsname}
+                                                        ProgramsDescription={programsdescription} />
+                                                </ButtonToolbar>
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </Table>
 
-                <ButtonToolbar>
-                    <Button variant='primary'
-                        onClick={() => this.setState({ addModelShow: true })}>
-                        Add Programs
-                    </Button>
+                            <ButtonToolbar>
+                                <Button variant='primary'
+                                    onClick={() => this.setState({ addModelShow: true })}>
+                                    Add Programs
+                                </Button>
 
-                    <AddPrograms show={this.state.addModelShow} onHide={addModelClose}>
-                    </AddPrograms>
-                </ButtonToolbar>
+                                <AddPrograms show={this.state.addModelShow} onHide={addModelClose}>
+                                </AddPrograms>
+                            </ButtonToolbar>
+                        </div>
+                    </Col>
+                </Row>
             </div>
         )
     }

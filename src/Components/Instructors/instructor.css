@@ -1,0 +1,30 @@
+.about-section {
+    padding: 2%;
+
+    position: relative;
+    background-color:white;
+}
+
+.titleAbout {
+    text-align: center;
+    font-family: "oswald" !important;
+    color: rgb(0, 119, 255)
+}
+
+.rtext{
+    padding-top:3%;
+    text-align: center;
+    font-family: "oswald" !important;
+    font-size: 20px;
+}
+
+.ltext{
+    padding-top:3%;
+    text-align: center;
+    font-family: "oswald" !important;
+    font-size: 20px;
+}
+
+
+
+

@@ -7,10 +7,13 @@ import { AdminNews } from './Components/Home/Board/News/adminNews'
 import Olympiads from './Components/Olympiads/Olympiads'
 import Parents from './Components/Parents/Parents'
 import AboutUs from "./Components/AboutUs/AboutUs";
+import Instructors from "./Components/Instructors/Instructors";
 import { AdminAnnoucements } from './Components/Home/Board/Annoucements/adminAnnoucements'
 import {AdminPrograms} from "./Components/Programs/adminPrograms"
 import { AdminTimetable } from "./Components/Timetable/adminTimetable";
 import {Programs} from "./Components/Programs/Programs"
+import {Admin} from "./Components/Admin/Admin"
+import {Timetable} from "./Components/Timetable/Timetable"
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 import "./style.css";
@@ -37,10 +40,13 @@ function App() {
           <Route exact path="/Parents" element={<Parents />} />
           <Route exact path="/Aboutus" element={<AboutUs />} />
           <Route exact path="/Programs" element={<Programs />} />
+          <Route exact path="/Timetable" element={<Timetable />} />
+          <Route exact path="/Instructors" element={<Instructors />} />
           <Route exact path="/admin/news" element={<AdminNews />} />
           <Route exact path="/admin/annoucements" element={<AdminAnnoucements />} />
           <Route exact path="/admin/programs" element={<AdminPrograms />} />
           <Route exact path = "/admin/timetable" element = {<AdminTimetable />} />
+          <Route exact path = "/admin" element = {<Admin />} />
           <Route exact path = "" element = {<Home />} />
         </Routes>
         <Footer />

@@ -44,7 +44,7 @@ export class EditNews extends Component {
                     </Modal.Header>
                     <Modal.Body>
                     <Row>
-                        <Col sm={6}>
+                        <Col>
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Group controlId="NewsId">
                                     <Form.Label>NewsId</Form.Label>

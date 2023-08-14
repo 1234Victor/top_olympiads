@@ -8,6 +8,7 @@ import AnnoucementsBoard from "./Board/Annoucements/annoucementsboard"
 import BoardCard from "./Board/News/newsboardCard"
 import About from "./About/about"
 
+
 function Home() {
     return (
         <section>

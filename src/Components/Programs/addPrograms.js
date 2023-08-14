@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
 import { Modal, Button, Row, Col, Form } from 'react-bootstrap'
-
-
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export class AddPrograms extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            ProgramsDescription: this.props.ProgramsDescription || '',
+        }
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleEditorChange = (event, editor) => {
+        const data = editor.getData();
+        this.setState({ ProgramsDescription: data });
     }
     handleSubmit(event) {
         event.preventDefault();
@@ -19,7 +27,7 @@ export class AddPrograms extends Component {
             body: JSON.stringify({
                 ProgramsId: null,
                 ProgramsName: event.target.ProgramsName.value,
-                ProgramsDescription: event.target.ProgramsDescription.value
+                ProgramsDescription: this.state.ProgramsDescription,
             })
         })
         .then(res => res.json())
@@ -46,7 +54,7 @@ export class AddPrograms extends Component {
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={6}>
+                            <Col>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="ProgramsName">
                                         <Form.Label>Program Name</Form.Label>
@@ -55,8 +63,12 @@ export class AddPrograms extends Component {
                                     </Form.Group>
                                     <Form.Group controlId="ProgramsDescription">
                                         <Form.Label>Program Description</Form.Label>
-                                        <Form.Control type="text" name="ProgramsDescription" required
-                                            placeholder="ProgramsDescription" />
+                                        <CKEditor
+                                            editor={ClassicEditor}
+                                            data={this.state.ProgramsDescription}
+                                            onChange={this.handleEditorChange}
+                                            style={{ minHeight: '300px' }}
+                                        />
                                     </Form.Group>
                                     <br/>
                                     <Form.Group>

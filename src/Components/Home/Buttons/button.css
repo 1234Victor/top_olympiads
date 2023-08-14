@@ -27,3 +27,7 @@
     transition: all 0.5s ease-in-out; /* Add this for a smooth hover effect */
     padding-bottom: 1%!important;
   }
+
+.centerIcon{
+    padding-top: 10px;
+}
