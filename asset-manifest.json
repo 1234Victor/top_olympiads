@@ -1,26 +1,38 @@
 {
   "files": {
-    "main.css": "/top_olympiads/static/css/main.b84c8a50.css",
-    "main.js": "/top_olympiads/static/js/main.0e2152f0.js",
+    "main.css": "/top_olympiads/static/css/main.0fda9693.css",
+    "main.js": "/top_olympiads/static/js/main.175045d7.js",
     "static/js/787.3b7fd332.chunk.js": "/top_olympiads/static/js/787.3b7fd332.chunk.js",
     "static/media/banner.png": "/top_olympiads/static/media/banner.3326a63e5a86b47fda19.png",
     "static/media/runze2.png": "/top_olympiads/static/media/runze2.37f1c94c3c954498e41b.png",
     "static/media/runze4.png": "/top_olympiads/static/media/runze4.2a3db0358984af90d8a4.png",
     "static/media/about1.png": "/top_olympiads/static/media/about1.40909fed5a901ed8da79.png",
+    "static/media/ins12.jpg": "/top_olympiads/static/media/ins12.43fbb6e7fd0fe82ad59b.jpg",
     "static/media/runze1.png": "/top_olympiads/static/media/runze1.41bdf46a6e0724db5c3d.png",
+    "static/media/ins3.png": "/top_olympiads/static/media/ins3.3ea776d45dcee7168672.png",
+    "static/media/ins15.jpg": "/top_olympiads/static/media/ins15.099b288f750ace493f96.jpg",
+    "static/media/ins11.jpg": "/top_olympiads/static/media/ins11.4554accbd1b6ddfffedf.jpg",
+    "static/media/ins6.jpg": "/top_olympiads/static/media/ins6.a9890702aeb52d715cf6.jpg",
+    "static/media/ins1.png": "/top_olympiads/static/media/ins1.6a0ee3a6c47b147b7611.png",
+    "static/media/ins16.jpg": "/top_olympiads/static/media/ins16.ff2ac133bd18436dbef7.jpg",
+    "static/media/ins13.jpg": "/top_olympiads/static/media/ins13.44089655360711cb51f1.jpg",
+    "static/media/ins5.jpg": "/top_olympiads/static/media/ins5.bb92c588830553fa05ad.jpg",
+    "static/media/ins4.png": "/top_olympiads/static/media/ins4.da819189ef1de9db076d.png",
+    "static/media/ins14.jpg": "/top_olympiads/static/media/ins14.1dee8aeac01de323ce56.jpg",
     "static/media/logoWhite.png": "/top_olympiads/static/media/logoWhite.b065884b67d106cd4273.png",
     "static/media/logoBlack.png": "/top_olympiads/static/media/logoBlack.9107b105479bf92b436e.png",
+    "static/media/ins2.png": "/top_olympiads/static/media/ins2.f9d5f90f89ef4ae995d0.png",
     "static/media/mathComp.png": "/top_olympiads/static/media/mathComp.3160e9a9a80d19ba9e1e.png",
     "static/media/scienceComp.png": "/top_olympiads/static/media/scienceComp.010c2f06fec91485d28b.png",
     "static/media/mathComp1.png": "/top_olympiads/static/media/mathComp1.7aae29f8452e4e0cd4a2.png",
     "static/media/computerComp.png": "/top_olympiads/static/media/computerComp.6eae091d0dca2b7c047f.png",
     "index.html": "/top_olympiads/index.html",
-    "main.b84c8a50.css.map": "/top_olympiads/static/css/main.b84c8a50.css.map",
-    "main.0e2152f0.js.map": "/top_olympiads/static/js/main.0e2152f0.js.map",
+    "main.0fda9693.css.map": "/top_olympiads/static/css/main.0fda9693.css.map",
+    "main.175045d7.js.map": "/top_olympiads/static/js/main.175045d7.js.map",
     "787.3b7fd332.chunk.js.map": "/top_olympiads/static/js/787.3b7fd332.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b84c8a50.css",
-    "static/js/main.0e2152f0.js"
+    "static/css/main.0fda9693.css",
+    "static/js/main.175045d7.js"
   ]
 }
